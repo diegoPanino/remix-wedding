@@ -1,7 +1,6 @@
 import { PassThrough } from "stream";
 import {
 	createReadableStreamFromReadable,
-	type EntryContext,
 } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import { isbot } from "isbot";
@@ -13,10 +12,11 @@ import Backend from "i18next-fs-backend";
 import i18n from "./i18n"; // your i18n configuration file
 import { resolve } from "node:path";
 import path from "path";
+import { handleRequest, type EntryContext } from '@vercel/remix';
 
 const ABORT_DELAY = 5000;
 
-export default async function handleRequest(
+export default async function (
 	request: Request,
 	responseStatusCode: number,
 	responseHeaders: Headers,
@@ -40,40 +40,50 @@ export default async function handleRequest(
                 loadPath: resolve("./public/locales/{{lng}}.json")
             },
 		});
+	let remixServer = (<I18nextProvider i18n={instance}>
+		<RemixServer context={remixContext} url={request.url} />
+	</I18nextProvider>);
 
-	return new Promise((resolve, reject) => {
-		let didError = false;
+	return handleRequest(
+		request,
+		responseStatusCode,
+		responseHeaders,
+		remixServer
+	)
 
-		let { pipe, abort } = renderToPipeableStream(
-			<I18nextProvider i18n={instance}>
-				<RemixServer context={remixContext} url={request.url} />
-			</I18nextProvider>,
-			{
-				[callbackName]: () => {
-					let body = new PassThrough();
-					const stream = createReadableStreamFromReadable(body);
-					responseHeaders.set("Content-Type", "text/html");
+	// return new Promise((resolve, reject) => {
+	// 	let didError = false;
 
-					resolve(
-						new Response(stream, {
-							headers: responseHeaders,
-							status: didError ? 500 : responseStatusCode,
-						}),
-					);
+	// 	let { pipe, abort } = renderToPipeableStream(
+	// 		<I18nextProvider i18n={instance}>
+	// 			<RemixServer context={remixContext} url={request.url} />
+	// 		</I18nextProvider>,
+	// 		{
+	// 			[callbackName]: () => {
+	// 				let body = new PassThrough();
+	// 				const stream = createReadableStreamFromReadable(body);
+	// 				responseHeaders.set("Content-Type", "text/html");
 
-					pipe(body);
-				},
-				onShellError(error: unknown) {
-					reject(error);
-				},
-				onError(error: unknown) {
-					didError = true;
+	// 				resolve(
+	// 					new Response(stream, {
+	// 						headers: responseHeaders,
+	// 						status: didError ? 500 : responseStatusCode,
+	// 					}),
+	// 				);
 
-					console.error(error);
-				},
-			},
-		);
+	// 				pipe(body);
+	// 			},
+	// 			onShellError(error: unknown) {
+	// 				reject(error);
+	// 			},
+	// 			onError(error: unknown) {
+	// 				didError = true;
 
-		setTimeout(abort, ABORT_DELAY);
-	});
+	// 				console.error(error);
+	// 			},
+	// 		},
+	// 	);
+
+	// 	setTimeout(abort, ABORT_DELAY);
+	// });
 }
