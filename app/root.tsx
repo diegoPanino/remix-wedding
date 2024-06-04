@@ -42,6 +42,10 @@ export let handle = {
 	i18n: "translation",
 };
 
+export const config = {
+  memory: 1024,
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
   // Get the locale from the loader
 	let { locale } = useLoaderData<typeof loader>();
