@@ -1,4 +1,7 @@
 import type { MetaFunction } from "@vercel/remix";
+import { useTranslation } from "react-i18next";
+import Header from "~/components/Header";
+import ImgTextOverlay from "~/components/ImgTextOverlay";
 
 export const meta: MetaFunction = () => {
   return [
@@ -8,34 +11,45 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  let { t } = useTranslation();
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
+    <>
+      <Header />
+      <main>
+        <ImgTextOverlay img="/assets/images/casas-de-posada.jpg">
+            <h3 className="font-black text-4xl w-fit text-center">
+              <span className="bg-verde-salvia">{t('Enjoy is mandatory')}</span><br/>
+              <span className="bg-verde-salvia">{t('Fomalities are optionals')}</span>
+            </h3>
+            <h3 className="font-black text-4xl w-fit text-center">
+              <span className="bg-crema-pastello">{t("7 September 2024")}</span><br/>
+              <span className="bg-crema-pastello">{t("Cases altes de posada, Navés")}</span><br/>
+              <span className="bg-crema-pastello">{t("Catalunya")}</span><br/>
+            </h3>
+            <a 
+              href="https://calendar.app.google/kbeJU79R2cF8TkMc6"
+              target="_blank"
+              className="text-sm normal-case bg-black text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-gray-900 cursor-pointer"
+            >
+              {t("Stick it in your agenda")}
           </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+        </ImgTextOverlay>
+        <section className="flex">
+          <div className="p-8 text-center basis-3/6 bg-verde-salvia flex flex-col justify-center">
+            <h5 className="text-5xl underline pb-10">{t("Diego & Olga")}</h5>
+            <div className="text-start text-3xl">
+              <p>{t("Congratulations")}!!</p>
+              <p>{t("You have been selected as guest to our party. The journey is long, the reward is fleeting")}</p>
+              <p>{t("Ready")}?</p>
+            </div>
+          </div>
+          <div className="basis-3/6 relative pt-[50%]">
+            <video controls autoPlay muted loop className="absolute top-0 left-0 w-full h-full">
+              <source src="/assets/video/dont-own-me.mp4" type="video/mp4"></source>
+            </video>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
