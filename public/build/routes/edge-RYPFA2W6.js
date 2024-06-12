@@ -1,0 +1,1 @@
+import{e as t,h as i}from"/build/_shared/chunk-IB75DRYS.js";var e=t(i(),1);var n=()=>[{title:"Remix@Edge | New Remix App"}];function o(){return(0,e.jsx)("div",{style:{fontFamily:"system-ui, sans-serif",lineHeight:"1.4"},children:(0,e.jsx)("h1",{children:"Welcome to Remix@Edge"})})}export{o as default,n as meta};
