@@ -2,6 +2,7 @@ import type { MetaFunction } from "@vercel/remix";
 import { useTranslation } from "react-i18next";
 import Header from "~/components/Header";
 import ImgTextOverlay from "~/components/ImgTextOverlay";
+import RegistrationForm from "~/components/RegistrationForm";
 
 export const meta: MetaFunction = () => {
   return [
@@ -48,6 +49,9 @@ export default function Index() {
               <source src="/assets/video/dont-own-me.mp4" type="video/mp4"></source>
             </video>
           </div>
+        </section>
+        <section>
+          <RegistrationForm />
         </section>
       </main>
     </>
