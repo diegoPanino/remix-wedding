@@ -1,4 +1,5 @@
-import type { MetaFunction } from "@vercel/remix";
+import { json, useActionData } from "@remix-run/react";
+import type { ActionFunctionArgs, MetaFunction } from "@vercel/remix";
 import { useTranslation } from "react-i18next";
 import Header from "~/components/Header";
 import ImgTextOverlay from "~/components/ImgTextOverlay";
@@ -6,13 +7,20 @@ import RegistrationForm from "~/components/RegistrationForm";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "E Giacomino si sposa.." },
+    { name: "description", content: "Olga&Diego Get marry !" },
   ];
 };
 
+export async function action({ request }: ActionFunctionArgs) {
+    console.log(await request.formData());
+    return json({status:"ok"});
+}
+
 export default function Index() {
   let { t } = useTranslation();
+  const actionData = useActionData();
+  console.log('🚀 ~ Index ~ actionData:', actionData);
   return (
     <>
       <Header />

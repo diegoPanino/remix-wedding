@@ -2,13 +2,14 @@ import { Radio, RadioGroup } from "@headlessui/react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Icon from "./Icon";
+import { InputBlockFieldsProps } from "./InputsBlock";
 
 type TnightOptions = {
     value: string;
     label: string;
 }
 
-export default function RadioAccomodation() {
+export default function RadioAccomodation({index}:InputBlockFieldsProps) {
     let { t } = useTranslation();
     const nightOptions: TnightOptions[] = [
         { value: "no", label: t("Nah, I'm good") },
@@ -18,7 +19,7 @@ export default function RadioAccomodation() {
     const [selected, setSelected] = useState<TnightOptions>(nightOptions[0]);
     
     return (
-        <RadioGroup by={"value"} value={selected} onChange={setSelected} className="space-y-2">
+        <RadioGroup name={`accomodation-${index}`} by={"value"} value={selected} onChange={setSelected} className="space-y-2">
             {nightOptions.map(option => (
                 <Radio
                     key={option.value}
