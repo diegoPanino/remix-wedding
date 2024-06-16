@@ -30,7 +30,7 @@ export default function RadioAccomodation({index}:InputBlockFieldsProps) {
                         <div className="text-sm/6">
                             <p className="font-semibold text-white">{option.label}</p>
                         </div>
-                        <Icon icon="checkCircle" width={24} className="min-w-[24px] fill-white opacity-0 transition group-data-[checked]:opacity-100"/>
+                        <Icon icon="checkCircle" size={24} className="min-w-[24px] fill-white opacity-0 transition group-data-[checked]:opacity-100"/>
                     </div>
                 </Radio>
             ))}

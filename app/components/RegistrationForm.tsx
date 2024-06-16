@@ -1,4 +1,5 @@
 import { Form, useSubmit } from "@remix-run/react";
+import { v4 as uuidv4 } from 'uuid'; // Import the uuid library
 import InputsBlock from "./InputsBlock";
 import { FormEvent, useState } from "react";
 import { Button } from '@headlessui/react'
@@ -6,54 +7,43 @@ import { useTranslation } from "react-i18next";
 import Icon from "./Icon";
 
 type TUsers = {
-    index: number;
-    name: string;
-    menu: string;
-    intollerance: string;
-    eta: string;
-    needBeed: string;
+    id: string;
 }
 
 export default function RegistrationForm() {
     let { t } = useTranslation();
     const submit = useSubmit();
     const emptyUser: TUsers = {
-        index:0,
-        name: "",
-        menu: "",
-        intollerance: "",
-        eta: "",
-        needBeed: ""
+        id: uuidv4(),
     }
     const [users, setUsers] = useState<TUsers[]>([emptyUser]);
 
     const handleAddUser = () => {
-        const newUser = { ...emptyUser, index: users.length };
+        const newUser = { id: uuidv4() };
         setUsers([...users, newUser]);
     }
 
-    const handleDeleteField = (index: number) => {
-        const newUsers = users.filter((user, i) => i !== index);
+    const handleDeleteField = (id: string) => {
+        const newUsers = users.filter((user) => user.id !== id );
         setUsers(newUsers);
     }
 
     const onSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         const { currentTarget } = event;
-        const totUser = users.   d
-        console.log('🚀 ~ onSubmitHandler ~ currentTarget:', currentTarget);
         const formData = new FormData(currentTarget);
+        formData.append("totalRegistrations", users.length.toFixed(0));
         submit(formData, { method: "post" });
-        
     }
 
     return (
-        <div className="p-8 mx-auto w-full max-w-[90vw] lg:max-w-[75vw]">
+        <div className="px-0 py-8 lg:p-8 mx-auto w-full max-w-[90vw] lg:max-w-[75vw]">
             <Form method="post" onSubmit={onSubmitHandler}>
                 {users.map((user, index) => (
                     <InputsBlock
-                        key={index}
+                        key={user.id}
                         index={index}
-                        delete={() => handleDeleteField(index)}
+                        deleteCb={() => handleDeleteField(user.id)}
                     />
                 ))}
                 <div className="flex w-full justify-center">

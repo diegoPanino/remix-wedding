@@ -6,6 +6,6 @@ export type MyInputProps = ComponentProps<typeof Input> & JSX.IntrinsicElements[
 export default function MyInput(props: MyInputProps) {
     const { className } = props;
     return (
-        <Input className={`${className} styledInput` } {...props} />
+        <Input className={`${className ? className : ""} styledInput` } {...props} />
     )
 }
