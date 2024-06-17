@@ -16,7 +16,7 @@ export const meta: MetaFunction = () => {
 export async function action({ request }: ActionFunctionArgs) {
 	const FORM_URL = "https://script.google.com/macros/s/AKfycbxl5bRL04AiiDWGmcejleCuQPRY0S8kILlm1biQOHpDdDI9YnT4e9Tyt-V7jvqjigYX/exec";
 	const submittedForm = await request.formData();
-	// console.log('🚀 ~ action ~ submittedForm:', submittedForm);
+
 	const totalRegistrationsValue = submittedForm.get("totalRegistrations");
 	const registerFormData = [];
 
@@ -48,7 +48,7 @@ export async function action({ request }: ActionFunctionArgs) {
 		const data = await response.json();
 		
 		if (!response.ok && data.result) throw new Error(response.statusText);
-		return json({ status: "ok",resume:registerFormData });
+		return json({ status: true,resume:registerFormData });
 	}
 	catch (e) {
 		return json({ status: false, error: e });
@@ -57,8 +57,6 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function Index() {
 	let { t } = useTranslation();
-	const actionData = useActionData<typeof action>();
-	console.log(actionData);
 	return (
 		<>
 			<Header />

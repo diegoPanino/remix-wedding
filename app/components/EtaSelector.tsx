@@ -4,19 +4,19 @@ import { useState } from "react";
 import { InputBlockFieldsProps } from "./InputsBlock";
 
 type tEtaDayOption = {
-    value: number,
+    value: string,
     label: string
 };
 export default function EtaSelector({ index }: InputBlockFieldsProps) {
     let { t } = useTranslation();
     const menuOptions: tEtaDayOption[] = [
-        { value: 1, label: t("Sunday 01") },
-        { value: 2, label: t("Monday 02") },
-        { value: 3, label: t("Tuesday 03") },
-        { value: 4, label: t("Wednesday 04") },
-        { value: 5, label: t("Thursday 05") },
-        { value: 6, label: t("Friday 06") },
-        { value: 7, label: t("Saturday 07") },
+        { value: "01/09/2024", label: t("Sunday 01") },
+        { value: "02/09/2024", label: t("Monday 02") },
+        { value: "03/09/2024", label: t("Tuesday 03") },
+        { value: "04/09/2024", label: t("Wednesday 04") },
+        { value: "05/09/2024", label: t("Thursday 05") },
+        { value: "06/09/2024", label: t("Friday 06") },
+        { value: "07/09/2024", label: t("Saturday 07") },
     ];
     const [selectedDay, setSelectedDay] = useState<tEtaDayOption>(menuOptions[5]);
     return (

@@ -1,18 +1,31 @@
 import { Form, useSubmit } from "@remix-run/react";
 import { v4 as uuidv4 } from 'uuid'; // Import the uuid library
 import InputsBlock from "./InputsBlock";
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Button } from '@headlessui/react'
 import { useTranslation } from "react-i18next";
 import Icon from "./Icon";
+import ConfimationModal from "./ConfirmationModal";
 
 type TUsers = {
     id: string;
+}
+export type TResumeData = {
+    name: string;
+    menu: string;
+    intollerance: string;
+    bed: string;
+    eta: string;
+    note: string;
 }
 
 export default function RegistrationForm() {
     let { t } = useTranslation();
     const submit = useSubmit();
+    const [showResume, setShowResume] = useState(false);
+    const [resumeData, setResumeData] = useState<TResumeData[]>([]);
+    const formRef = useRef<HTMLFormElement>(null);
+
     const emptyUser: TUsers = {
         id: uuidv4(),
     }
@@ -32,13 +45,51 @@ export default function RegistrationForm() {
         event.preventDefault();
         const { currentTarget } = event;
         const formData = new FormData(currentTarget);
+        let emptyNames = false;
+        for (let i = 0; i < users.length; i++){
+            const name = formData.get(`name-${i}`);
+            if (name?.toString().trim() === "" || !name) emptyNames = true;
+        }
+        if (!emptyNames) {
+            const newResumeData: TResumeData[] = [];
+            for (let i = 0; i < users.length; i++) {
+                const name = formData.get(`name-${i}`)?.toString() || "";
+                const menu = formData.get(`menu-${i}`)?.toString() || "";
+                const intollerance = formData.get(`intollerance-${i}`)?.toString() || "";
+                const bed = formData.get(`accomodation-${i}[value]`)?.toString() || "";
+                const eta = formData.get(`etaDay-${i}`)?.toString() || "";
+                const note = formData.get(`extra-${i}`)?.toString() || "";
+                newResumeData.push({
+                    name,
+                    menu,
+                    intollerance,
+                    bed,
+                    eta,
+                    note
+                });
+            }
+            setResumeData([...resumeData, ...newResumeData]);
+            setShowResume(true);
+        }
+        // if (!emptyNames) {submit(formData, { method: "post" });}
+        else alert(t("We need at least a name!"));
+    }
+
+    const onConfirmSubmitHandler = () => {
+        if (!formRef.current) return;
+        const formData = new FormData(formRef.current);
         formData.append("totalRegistrations", users.length.toFixed(0));
         submit(formData, { method: "post" });
     }
 
+    const toggleModal = () => {
+        setShowResume(s => !s);
+        setResumeData([]);
+    }
+
     return (
         <div className="px-0 py-8 lg:p-8 mx-auto w-full max-w-[90vw] lg:max-w-[75vw]">
-            <Form method="post" onSubmit={onSubmitHandler}>
+            <Form method="post" onSubmit={onSubmitHandler} ref={formRef}>
                 {users.map((user, index) => (
                     <InputsBlock
                         key={user.id}
@@ -69,6 +120,14 @@ export default function RegistrationForm() {
                     </Button>
                 </div>
             </Form>
+            {showResume
+                ? <ConfimationModal
+                    resumeData={resumeData}
+                    toggleModal={toggleModal}
+                    submit={onConfirmSubmitHandler}
+                />
+                : null
+            }
         </div>
         
     )
