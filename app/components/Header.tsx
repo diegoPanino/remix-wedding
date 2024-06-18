@@ -12,7 +12,7 @@ export default function Header() {
                     <span>El amor, no menos que la danza de las Ménades y el furor delirante de los Coribantes, nos arrastra a un universo insólito, donde en otros momentos está prohibido aventurarse, y donde dejamos de orientarnos tan pronto como el ardor se apaga y el placer se aplaca.</span>
                 </MarqueeText>
             </div>
-            <div className="col-span-1 lg:col-span-2">
+            <div className="col-span-1 lg:col-span-2 leading-[0px]">
                 <LangSwitcher />
             </div>
         </header>
