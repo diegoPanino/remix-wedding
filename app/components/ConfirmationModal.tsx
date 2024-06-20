@@ -80,43 +80,43 @@ export default function ConfimationModal({ resumeData, toggleModal, submit }: Co
             )}
             {((!isLoading && !actionData) && resumeData && resumeData.length) &&
                 
-                <div className="z-50 fixed top-0 left-0 w-screen min-h-screen h-full flex-col flex lg:justify-center items-center bg-emerald-950/50 backdrop-blur-md overflow-y-auto">
-                    <div className="flex flex-col bg-sky-700 p-8 rounded-lg">
+                <div className="z-50 text-white fixed top-0 left-0 w-screen min-h-screen h-full flex-col flex lg:justify-center items-center bg-emerald-950/50 backdrop-blur-md overflow-y-auto">
+                    <div className="m-8 lg:m-0 flex flex-col bg-indigo-900 p-8 rounded-lg">
                         <p className="text-center mb-5">{t("Confirming for:")} {resumeData.length}</p>
                         <div className={`grid ${grid}`}>
-                            {resumeData.map(data => (
-                                <div className="flex flex-col gap-1 shadow-md p-8 bg-sky-600/25">
-                                    <div className="flex gap-3">
+                            {resumeData.map((data,index) => (
+                                <div key={`${data.name}-${index}`} className="flex flex-col gap-1 shadow-md p-8 bg-sky-600/25">
+                                    <div className="flex gap-3 items-center">
                                         <p>{t("Name")}:</p>
                                         <p className="font-semibold">{data.name}</p>
                                     </div>
-                                    <div className="flex gap-3">
+                                    <div className="flex gap-3 items-center">
                                         <p>Menu:</p>
                                         <p className="font-semibold">{data.menu}</p>
                                     </div>
-                                    <div className="flex flex-col">
+                                    <div className="flex flex-col items-center">
                                         <p>{t("Alimentar intollerance")}:</p>
                                         <p className="font-semibold">{data.intollerance}</p>
                                     </div>
-                                    <div className="flex gap-3">
+                                    <div className="flex gap-3 items-center">
                                         <p>{t("Need a place to sleep?")}:</p>
                                         <p className="font-semibold">{data.bed}</p>
                                     </div>
-                                    <div className="flex gap-3">
+                                    <div className="flex gap-3 items-center">
                                         <p>{t("Which day you'll arrive?")}:</p>
                                         <p className="font-semibold">{data.eta}</p>
                                     </div>
-                                    <div className="flex flex-col">
+                                    <div className="flex flex-col items-center">
                                         <p>{t("Anything you believe make sense for us to know!")}:</p>
                                         <p className="font-semibold">{data.note}</p>
                                     </div>
                                 </div>         
                             ))}
                         </div>
-                        <div className="flex gap-4">
+                        <div className="lg:m-0 flex-col lg:flex-row flex gap-4">
                             {!isLoading
                                 ? <Button
-                                        className="w-full mt-10 flex justify-center items-center text-lg gap-3 normal-case text-center px-6 py-3 text-black hover:underline transition-all cursor-pointer"
+                                        className="w-full mt-4 underline lg:mt-10 flex justify-center items-center text-lg gap-3 normal-case text-center px-6 py-3 text-white hover:underline transition-all cursor-pointer"
                                         type="button"
                                         onClick={toggleModal}
                                 >
@@ -125,7 +125,7 @@ export default function ConfimationModal({ resumeData, toggleModal, submit }: Co
                                 : null
                             }
                             <Button
-                                className="w-full mt-10 flex justify-center items-center text-lg gap-3 normal-case bg-black text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-gray-900 cursor-pointer"
+                                className="w-full lg:mt-10 flex justify-center items-center text-lg gap-3 normal-case bg-black text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-gray-900 cursor-pointer"
                                 type="button"
                                 onClick={submitHandler}
                                 disabled={isLoading}

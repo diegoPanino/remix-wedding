@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 export default function ImportantInfo() {
     const {t} = useTranslation();
@@ -11,6 +11,12 @@ export default function ImportantInfo() {
                 <p className="font-semibold">{t("From Barcelona Airport")}</p>
                 <ul className="list-decimal pl-4 px-2">
                     <li>
+                        <Trans
+                            i18nKey="Goal: Get to the bus station (Estació del Nord). How?"
+                            components={{
+                                link: <a href="https://www.google.com/maps/place/Estació+del+Nord">Estació del Nord</a>,
+                            }}
+                        />
                         <p>{t("Goal: Get to the bus station (Estació del Nord). How?")}</p>
                         <ul className="list-['*'] pl-4 px-2">
                             <li><p>{t("Take the bus (Aerobus) from the airport and then, once at Plaça Catalunya, take the metro to Arc de Triomf (L1 metro stop).")}</p></li>

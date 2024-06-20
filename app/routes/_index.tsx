@@ -171,7 +171,7 @@ export default function Index() {
 				<section>
 					<RegistrationForm />
 				</section>
-				<section className="mt-10 pt-10 bg-crema-pastello">
+				<section className="mt-10 pt-10 bg-white">
 					<Sponsor />
 				</section>
 			</main>
