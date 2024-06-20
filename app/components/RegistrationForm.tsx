@@ -99,7 +99,7 @@ export default function RegistrationForm() {
                 ))}
                 <div className="flex w-full justify-center">
                     <Button
-                        className="mt-5 flex gap-3 text-sm normal-case bg-black text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-gray-900 cursor-pointer"
+                        className="mt-5 flex gap-3 text-sm normal-case bg-emerald-500 text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-gray-900 cursor-pointer"
                         type="button"
                         onClick={handleAddUser}
                     >

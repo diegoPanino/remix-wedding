@@ -64,7 +64,7 @@ export default function InputsBlock({ index, deleteCb }: InputsBlokProps) {
                 ? null
                 : (
                     <div
-                        className="ml-4 absolute left-full top-1/2 -translate-y-2/4 px-6 py-3 flex justify-center items-center text-lg gap-3 normal-case bg-black text-center text-white hover:scale-105 transition-all hover:bg-gray-900 cursor-pointer"
+                        className="ml-4 absolute rounded-lg right-0 top-0 lg:left-full lg:top-1/2 lg:-translate-y-2/4 lg:rounded-none px-6 py-3 flex justify-center items-center text-lg gap-3 normal-case bg-black text-center text-white hover:scale-105 transition-all hover:bg-gray-900 cursor-pointer"
                         onClick={onDeleteHandler}
                         >
                         <Icon

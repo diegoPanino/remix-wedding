@@ -47,7 +47,7 @@ export default function ConfimationModal({ resumeData, toggleModal, submit }: Co
     return (
         <>  
             {(isLoading && !actionData) && (
-                <div className="fixed top-0 left-0 w-screen h-screen flex-col flex justify-center items-center bg-emerald-950/50 backdrop-blur-md overflow-y-auto">
+                <div className="z-50 fixed top-0 left-0 w-screen h-screen flex-col flex justify-center items-center bg-emerald-950/50 backdrop-blur-md overflow-y-auto">
                     <div className="flex flex-col bg-sky-700 p-8 rounded-lg items-center">
                         <img className="mb-4 max-h-[50vh]" src="/assets/images/pray.png" />
                         <div className="loader"></div>
@@ -56,7 +56,7 @@ export default function ConfimationModal({ resumeData, toggleModal, submit }: Co
             )} 
 
             {(actionData && actionData.status) && (
-                <div className="fixed top-0 left-0 w-screen h-screen flex-col flex justify-center items-center bg-emerald-950/50 backdrop-blur-md overflow-y-auto">
+                <div className="z-50 fixed top-0 left-0 w-screen h-screen flex-col flex justify-center items-center bg-emerald-950/50 backdrop-blur-md overflow-y-auto">
                     <div className="flex flex-col bg-sky-700 p-8 rounded-lg">
                         <div className="flex gap-2">
                             <img className="w-[50%] lg:max-w-[20vw]" src="/assets/images/Dsucced.png" />
@@ -71,7 +71,7 @@ export default function ConfimationModal({ resumeData, toggleModal, submit }: Co
             )}
 
             {(actionData && !actionData.status) && (
-                <div className="fixed top-0 left-0 w-screen h-screen flex-col flex justify-center items-center bg-emerald-950/50 backdrop-blur-md overflow-y-auto">
+                <div className="z-50 fixed top-0 left-0 w-screen h-screen flex-col flex justify-center items-center bg-emerald-950/50 backdrop-blur-md overflow-y-auto">
                     <div className="flex flex-col bg-sky-700 p-8 rounded-lg">
                         <p className="text-center mb-5">{t("oh snap! something didn't work out as expected, turn it off and turn it on always works. (Refresh and try again, otherwise text us!!)")}</p>
                         <img className="max-h-[50vh] object-contain" src="/assets/images/grinch.png" />
@@ -80,7 +80,7 @@ export default function ConfimationModal({ resumeData, toggleModal, submit }: Co
             )}
             {((!isLoading && !actionData) && resumeData && resumeData.length) &&
                 
-                <div className="fixed top-0 left-0 w-screen h-screen flex-col flex justify-center items-center bg-emerald-950/50 backdrop-blur-md overflow-y-auto">
+                <div className="z-50 fixed top-0 left-0 w-screen min-h-screen h-full flex-col flex lg:justify-center items-center bg-emerald-950/50 backdrop-blur-md overflow-y-auto">
                     <div className="flex flex-col bg-sky-700 p-8 rounded-lg">
                         <p className="text-center mb-5">{t("Confirming for:")} {resumeData.length}</p>
                         <div className={`grid ${grid}`}>

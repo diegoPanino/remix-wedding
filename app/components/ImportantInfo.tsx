@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 export default function ImportantInfo() {
     const {t} = useTranslation();
     return (
-        <div className="bg-melanzana p-8">
+        <div className="bg-melanzana p-8 text-white">
             <h5 className="text-5xl underline pb-10">{t("Important Information")}</h5>
             <div className="text-xl">
                 <p>{t("Les Cases Altes de Posada is a farmhouse in the middle of the Vall de Lord, in Solsonès, Catalunya (¡Visca!). This is our home, and we hope you like it as much as we do. Since we like to live in a remote place, there are a few things to keep in mind.")}</p>
