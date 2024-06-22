@@ -97,11 +97,11 @@ export default function Index() {
 				<section className='flex flex-wrap lg:flex-nowrap'>
 					<div className='p-8 text-center basis-full lg:basis-3/6 bg-verde-salvia flex flex-col gap-4'>
 						<div className="flex gap-2">
-							<div className="w-full basis-1/2">
-								<img className="object-container h-full" src="/assets/images/do-puerta.jpeg" />
+							<div className="basis-1/2 relative ">
+								<img className=" top-0 left-0 w-full object-cover h-full" src="/assets/images/do-puerta.jpeg" />
 							</div>
-							<div className="w-full basis-1/2">
-								<img className="object-container h-full" src="/assets/images/do-grey.jpeg" />
+							<div className="basis-1/2 relative ">
+								<img className=" top-0 left-0 w-full object-cover h-full" src="/assets/images/do-grey.jpeg" />
 							</div>
 						</div>
 						<div className="flex h-full flex-col justify-center items-center">

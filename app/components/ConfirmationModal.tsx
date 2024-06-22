@@ -94,7 +94,7 @@ export default function ConfimationModal({ resumeData, toggleModal, submit }: Co
                                     </div>
                                     <div className="flex gap-3 items-center">
                                         <p>Menu:</p>
-                                        <p className="font-semibold">{data.menu}</p>
+                                        <p className="font-semibold">{t(data.menu)}</p>
                                     </div>
                                     <div className="flex flex-col">
                                         <p>{t("Alimentar intollerance")}:</p>
@@ -102,7 +102,7 @@ export default function ConfimationModal({ resumeData, toggleModal, submit }: Co
                                     </div>
                                     <div className="flex gap-3 items-center">
                                         <p>{t("Need a place to sleep?")}:</p>
-                                        <p className="font-semibold">{data.bed}</p>
+                                        <p className="font-semibold">{t(data.bed)}</p>
                                     </div>
                                     <div className="flex gap-3 items-center">
                                         <p>{t("Which day you'll arrive?")}:</p>

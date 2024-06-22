@@ -38,7 +38,7 @@ export default function EtaSelector({ index }: InputBlockFieldsProps) {
                     </Transition>
                 </Listbox>
             </div>
-            <div className="col-span-6">{t('September')} 2024</div>
+            <div className="col-span-6 text-white">{t('September')} '24</div>
             <input type="hidden" value={selectedDay.value} name={`etaDay-${index}`} />
         </div>
     )
