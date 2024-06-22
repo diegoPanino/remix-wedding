@@ -4,10 +4,11 @@ import MarqueeText from "react-marquee-text";
 export default function Sponsor() {
     return (
         <>
-            <h2 className="text-3xl underline text-center">SPONSOR</h2>
+            <h2 className="text-3xl underline py-10 bg-crema-pastello text-center">SPONSOR</h2>
             <MarqueeText duration={25} textSpacing="20px" pauseOnHover={false} direction="right" className="!flex items-center">
                 <div className="w-[200px] h-[200px] flex items-center justify-center">
                     <a className="hover:underline animate-pulse" href="https://www.flowersofcris.com/" target="_blank">
+                        <img src="/assets/images/cris-flowers.webp" />
                         flowersofcris.com
                     </a>
                 </div>

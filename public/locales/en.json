@@ -33,10 +33,10 @@
     "Les Cases Altes de Posada is a farmhouse in the middle of the Vall de Lord, in Solsonès, Catalunya (¡Visca!). This is our home, and we hope you like it as much as we do. Since we like to live in a remote place, there are a few things to keep in mind.":"Les Cases Altes de Posada is a farmhouse in the middle of the Vall de Lord, in Solsonès, Catalunya (¡Visca!). This is our home, and we hope you like it as much as we do. Since we like to live in a remote place, there are a few things to keep in mind.",
     "Transportation":"Transportation",
     "From Barcelona Airport":"From Barcelona Airport",
-    "Goal: Get to the bus station (Estació del Nord). How?":"Goal: Get to the bus station <link>(Estació del Nord)</link>. How?",
-    "Take the bus (Aerobus) from the airport and then, once at Plaça Catalunya, take the metro to Arc de Triomf (L1 metro stop).":"Take the bus (Aerobus) from the airport and then, once at Plaça Catalunya, take the metro to Arc de Triomf (L1 metro stop).",
+    "Goal: Get to the bus station (Estació del Nord). How?":"Goal: Getssss to the bus station <0>(Estació del Nord)</0>. How?",
+    "Take the bus (Aerobus) from the airport and then, once at Plaça Catalunya, take the metro to Arc de Triomf (L1 metro stop).":"Take the bus <0>(Aerobus)</0> from the airport and then, once at <1>Plaça Catalunya</1>, take the metro to <2>Arc de Triomf (L1 metro stop).</2>",
     "Alternatively, you can take a taxi directly from the airport to the bus station.":"Alternatively, you can take a taxi directly from the airport to the bus station.",
-    "From there, take the bus to Solsona (Alsa company). It is a two-hour trip.":"From there, take the bus to Solsona (Alsa company). It is a two-hour trip.",
+    "From there, take the bus to Solsona (Alsa company). It is a two-hour trip.":"From there, take the bus to Solsona (<0>Alsa</0> company). It is a two-hour trip.",
     "Cost: 20 euros (buy online or on the bus).":"Cost: 20 euros (buy online or on the bus).",
     "Bus Schedules":"Bus Schedules",
     "Temperature":"Temperature",
@@ -45,4 +45,6 @@
     "The day before the wedding, there will be a pre-party. (Details to follow!)":"The day before the wedding, there will be a pre-party. (Details to follow!)",
     "Camping":"Camping",
     "It is possible to camp. In the village, there are paid parking spaces for equipped camping. Where we are getting married, there is plenty of space, so on Friday and Saturday you can sleep in your van, free of charge and without additional costs.":"It is possible to camp. In the village, there are paid parking spaces for equipped camping. Where we are getting married, there is plenty of space, so on Friday and Saturday you can sleep in your van, free of charge and without additional costs.",
+    "Be carefull because this schedule may not be updated!":"Be carefull because this schedule may not be updated!",
+    "Got it, thanks!":"Got it, thanks!"
 }

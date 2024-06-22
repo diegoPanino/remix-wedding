@@ -95,18 +95,28 @@ export default function Index() {
 					</a>
 				</ImgTextOverlay>
 				<section className='flex flex-wrap lg:flex-nowrap'>
-					<div className='p-8 text-center basis-full lg:basis-3/6 bg-verde-salvia flex flex-col justify-center'>
-						<h5 className='text-5xl underline pb-10'>
-							{t("Diego & Olga")}
-						</h5>
-						<div className='text-start text-3xl'>
-							<p>{t("Congratulations")}!!</p>
-							<p>
-								{t(
-									"You have been selected as guest to our party. The journey is long, the reward is fleeting"
-								)}
-							</p>
-							<p>{t("Ready")}?</p>
+					<div className='p-8 text-center basis-full lg:basis-3/6 bg-verde-salvia flex flex-col gap-4'>
+						<div className="flex gap-2">
+							<div className="w-full basis-1/2">
+								<img className="object-container h-full" src="/assets/images/do-puerta.jpeg" />
+							</div>
+							<div className="w-full basis-1/2">
+								<img className="object-container h-full" src="/assets/images/do-grey.jpeg" />
+							</div>
+						</div>
+						<div className="flex h-full flex-col justify-center items-center">
+							<h5 className='font-black text-4xl text-5xl uppercase pb-10'>
+								{t("Diego & Olga")}
+							</h5>
+							<div className='text-center text-3xl'>
+								<p>{t("Congratulations")}!!</p>
+								<p>
+									{t(
+										"You have been selected as guest to our party. The journey is long, the reward is fleeting"
+									)}
+								</p>
+								<p>{t("Ready")}?</p>
+							</div>
 						</div>
 					</div>
 					<div className='basis-full lg:basis-3/6 relative pt-[100%] lg:pt-[50%]'>
@@ -122,7 +132,7 @@ export default function Index() {
 						</video>
 					</div>
 				</section>
-				<section>
+				<section className="important-info">
 					<ImportantInfo />
 				</section>
 				{/* Google Maps */}
@@ -171,7 +181,7 @@ export default function Index() {
 				<section>
 					<RegistrationForm />
 				</section>
-				<section className="mt-10 pt-10 bg-white">
+				<section className="mt-10 bg-white">
 					<Sponsor />
 				</section>
 			</main>

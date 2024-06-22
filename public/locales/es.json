@@ -33,10 +33,10 @@
     "Les Cases Altes de Posada is a farmhouse in the middle of the Vall de Lord, in Solsonès, Catalunya (¡Visca!). This is our home, and we hope you like it as much as we do. Since we like to live in a remote place, there are a few things to keep in mind.":"Les Cases Altes de Posada es una masía en medio de la Vall de Lord, en el Solsonès, Catalunya (¡Visca!). Esta es nuestra casa y esperamos que os guste tanto como a nosotros. Como nos gusta vivir en un lugar remoto, hay algunas cosas a tener en cuenta.",
     "Transportation":"Transporte",
     "From Barcelona Airport":"Desde el Aeropuerto de Barcelona",
-    "Goal: Get to the bus station (Estació del Nord). How?":"Objetivo: Llegar a la estación de autobuses (Estació del Nord). ¿Cómo?",
-    "Take the bus (Aerobus) from the airport and then, once at Plaça Catalunya, take the metro to Arc de Triomf (L1 metro stop).":"Coger el autobús (Aerobus) desde el aeropuerto y luego, una vez en Plaça Catalunya, coger el metro hasta Arc de Triomf (parada de metro L1).",
+    "Goal: Get to the bus station (Estació del Nord). How?":"Objetivo: Llegar a la estación de autobuses <0>(Estació del Nord)</0>. ¿Cómo?",
+    "Take the bus (Aerobus) from the airport and then, once at Plaça Catalunya, take the metro to Arc de Triomf (L1 metro stop).":"Coger el autobús <0>(Aerobus)</0> desde el aeropuerto y luego, una vez en <1>Plaça Catalunya</1>, coger el metro hasta <2>Arc de Triomf (parada de metro L1).</2>",
     "Alternatively, you can take a taxi directly from the airport to the bus station.":"Alternativamente, podéis tomar un taxi directamente desde el aeropuerto hasta la estación de autobuses.",
-    "From there, take the bus to Solsona (Alsa company). It is a two-hour trip.":"Desde allí, coger el autobús a Solsona (empresa Alsa). Son dos horas de viaje.",
+    "From there, take the bus to Solsona (Alsa company). It is a two-hour trip.":"Desde allí, coger el autobús a Solsona (empresa <0>Alsa</0>). Son dos horas de viaje.",
     "Cost: 20 euros (buy online or on the bus).":"Coste: 20 euros (compra online o en el mismo autobús).",
     "Bus Schedules":"Horarios de Autobuses",
     "Temperature":"Temperatura",
@@ -45,4 +45,6 @@
     "The day before the wedding, there will be a pre-party. (Details to follow!)":"El día antes de la boda habrá una pre-fiesta. (¡los detalles más adelante!).",
     "Camping":"Acampada",
     "It is possible to camp. In the village, there are paid parking spaces for equipped camping. Where we are getting married, there is plenty of space, so on Friday and Saturday you can sleep in your van, free of charge and without additional costs.":"Es posible acampar. En el pueblo hay aparcamientos para camping equipados de pago. Donde nos casamos, hay mucho espacio, así que el viernes y el sábado podéis dormir en furgoneta, gratis y sin costes adicionales.",
+    "Be carefull because this schedule may not be updated!":"Be carefull because this schedule may not be updated!",
+    "Got it, thanks!":"Got it, thanks!"
 }

@@ -33,10 +33,10 @@
     "Les Cases Altes de Posada is a farmhouse in the middle of the Vall de Lord, in Solsonès, Catalunya (¡Visca!). This is our home, and we hope you like it as much as we do. Since we like to live in a remote place, there are a few things to keep in mind.":"Les Cases Altes de Posada és una masia al mig de la Vall de Lord, al Solsonès, Catalunya (¡Visca!). Aquesta és casa nostra i esperem que us agradi tant com a nosaltres. Com que ens agrada viure en un lloc remot, hi ha algunes coses a tenir en compte.",
     "Transportation":"Transport",
     "From Barcelona Airport":"Des de l'Aeroport de Barcelona",
-    "Goal: Get to the bus station (Estació del Nord). How?":"Objectiu: Arribar a l'estació d'autobusos (Estació del Nord). Com?",
-    "Take the bus (Aerobus) from the airport and then, once at Plaça Catalunya, take the metro to Arc de Triomf (L1 metro stop).":"Agafar l'autobús (Aerobus) des de l'aeroport i després, un cop a Plaça Catalunya, agafar el metro fins a Arc de Triomf (parada de metro L1).",
+    "Goal: Get to the bus station (Estació del Nord). How?":"Objectiu: Arribar a l'estació d'autobusos <0>(Estació del Nord)</0>. Com?",
+    "Take the bus (Aerobus) from the airport and then, once at Plaça Catalunya, take the metro to Arc de Triomf (L1 metro stop).":"Agafar l'autobús <0>(Aerobus)</0> des de l'aeroport i després, un cop a <1>Plaça Catalunya</1>, agafar el metro fins a <2>Arc de Triomf (parada de metro L1)</2>.",
     "Alternatively, you can take a taxi directly from the airport to the bus station.":"Alternativament, podeu agafar un taxi directament des de l'aeroport fins a l'estació d'autobusos.",
-    "From there, take the bus to Solsona (Alsa company). It is a two-hour trip.":"Des d'allí, agafar l'autobús cap a Solsona (empresa Alsa). Són dues hores de viatge.",
+    "From there, take the bus to Solsona (Alsa company). It is a two-hour trip.":"Des d'allí, agafar l'autobús cap a Solsona (empresa <0>Alsa</0>). Són dues hores de viatge.",
     "Cost: 20 euros (buy online or on the bus).":"Cost: 20 euros (compra online o al mateix autobús).",
     "Bus Schedules":"Horaris d'Autobusos",
     "Temperature":"Temperatura",
@@ -45,4 +45,6 @@
     "The day before the wedding, there will be a pre-party. (Details to follow!)":"El dia abans del casament hi haurà una pre-festa. (Els detalls més endavant!)",
     "Camping":"Acampada",
     "It is possible to camp. In the village, there are paid parking spaces for equipped camping. Where we are getting married, there is plenty of space, so on Friday and Saturday you can sleep in your van, free of charge and without additional costs.":"És possible acampar. Al poble hi ha aparcaments per a càmping equipats de pagament. On ens casem, hi ha molt d'espai, així que el divendres i el dissabte podeu dormir a la furgoneta, gratuïtament i sense costos addicionals.",
+    "Be carefull because this schedule may not be updated!":"Be carefull because this schedule may not be updated!",
+    "Got it, thanks!":"Got it, thanks!"
 }

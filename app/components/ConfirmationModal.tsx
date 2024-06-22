@@ -26,7 +26,9 @@ export default function ConfimationModal({ resumeData, toggleModal, submit }: Co
         window.document.body.style.overflowY = 'hidden';
 
         return () => {
-            if (typeof window !== "undefined") window.document.body.style.overflowY = 'hidden';
+            if (typeof window !== "undefined") {
+                window.document.body.style.overflowY = 'auto';
+            }
         }
 
     }, [])
@@ -94,7 +96,7 @@ export default function ConfimationModal({ resumeData, toggleModal, submit }: Co
                                         <p>Menu:</p>
                                         <p className="font-semibold">{data.menu}</p>
                                     </div>
-                                    <div className="flex flex-col items-center">
+                                    <div className="flex flex-col">
                                         <p>{t("Alimentar intollerance")}:</p>
                                         <p className="font-semibold">{data.intollerance}</p>
                                     </div>

@@ -33,10 +33,10 @@
     "Les Cases Altes de Posada is a farmhouse in the middle of the Vall de Lord, in Solsonès, Catalunya (¡Visca!). This is our home, and we hope you like it as much as we do. Since we like to live in a remote place, there are a few things to keep in mind.":"Les Cases Altes de Posada è una masia nel mezzo della Vall de Lord, nel Solsonès, Catalunya (¡Visca!). Questa è casa nostra e speriamo vi piaccia tanto quanto a noi. Poiché ci piace ",
     "Transportation":"Trasporto",
     "From Barcelona Airport":"Da Barcellona Aeroporto (El Prat):",
-    "Goal: Get to the bus station (Estació del Nord). How?":"Obiettivo: Arrivare alla stazione dei pullman (Estació del Nord). Come?",
-    "Take the bus (Aerobus) from the airport and then, once at Plaça Catalunya, take the metro to Arc de Triomf (L1 metro stop).":"Prendere il pullman (Aerobus) dall'aeroporto e poi, una volta a Plaça Catalunya, prendere la metro fino a Arc de Triomf (fermata metro L1).",
+    "Goal: Get to the bus station (Estació del Nord). How?":"Obiettivo: Arrivare alla stazione dei pullman <0>(Estació del Nord)</0>. Come?",
+    "Take the bus (Aerobus) from the airport and then, once at Plaça Catalunya, take the metro to Arc de Triomf (L1 metro stop).":"Prendere il pullman <0>(Aerobus)</0> dall'aeroporto e poi, una volta a <1>Plaça Catalunya</1>, prendere la metro fino a <2>Arc de Triomf</2> (fermata metro L1).",
     "Alternatively, you can take a taxi directly from the airport to the bus station.":"In alternativa, potete prendere un taxi direttamente dall'aeroporto alla stazione dei pullman.",
-    "From there, take the bus to Solsona (Alsa company). It is a two-hour trip.":"Da lì, prendere un pullman per Solsona (azienda Alsa). Sono due ore di viaggio.",
+    "From there, take the bus to Solsona (Alsa company). It is a two-hour trip.":"Da lì, prendere un pullman per Solsona (azienda <0>Alsa</0>). Sono due ore di viaggio.",
     "Cost: 20 euros (buy online or on the bus).":"Costo: 20 euros (compra online o nello steso pullman)",
     "Bus Schedules":"Orari Pullman",
     "Temperature":"Temperatura",
@@ -44,5 +44,7 @@
     "Pre-Party":"Pre-Party",
     "The day before the wedding, there will be a pre-party. (Details to follow!)":"Il giorno prima del matrimonio ci sarà un pre-party. (i dettagli verranno!)",
     "Camping":"Campeggiare",
-    "It is possible to camp. In the village, there are paid parking spaces for equipped camping. Where we are getting married, there is plenty of space, so on Friday and Saturday you can sleep in your van, free of charge and without additional costs.":"È possibile campeggiare. In paese ci sono parcheggi per camping attrezzati a pagamento. Dove ci sposiamo, c'è molto spazio, quindi per il venerdì e il sabato potete dormire anche in van, abusivi e senza costi aggiuntivi."
+    "It is possible to camp. In the village, there are paid parking spaces for equipped camping. Where we are getting married, there is plenty of space, so on Friday and Saturday you can sleep in your van, free of charge and without additional costs.":"È possibile campeggiare. In paese ci sono parcheggi per camping attrezzati a pagamento. Dove ci sposiamo, c'è molto spazio, quindi per il venerdì e il sabato potete dormire anche in van, abusivi e senza costi aggiuntivi.",
+    "Be carefull because this schedule may not be updated!":"Attenzione, che gli orari potrebbero essere stati aggiornati",
+    "Got it, thanks!":"Capito, grazie!"
 }

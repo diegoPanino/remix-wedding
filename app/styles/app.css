@@ -103,3 +103,7 @@ div#DOanimation {
       transform: rotate(180deg);
     }
 }
+
+.important-info a{
+  @apply underline font-semibold;
+}
