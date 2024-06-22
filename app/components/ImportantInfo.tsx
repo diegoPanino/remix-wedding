@@ -55,7 +55,7 @@ export default function ImportantInfo() {
                         <p>{t("Cost: 20 euros (buy online or on the bus).")}</p>
                     </li>
                 </ul>
-                <p className="font-semibold">{t("Bus Schedules")}</p>
+                <p className="font-semibold mt-2">{t("Bus Schedules")}</p>
                 <ul>
                     <li className="font-semibold underline cursor-pointer w-fit" onClick={() => setVBusModal(true)}>
                         <p>06/09/2024</p>
