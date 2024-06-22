@@ -89,7 +89,7 @@ export default function ImportantInfo() {
                             </div>
                         </Dialog>
                     </li>
-                    <li className="font-semibold underline" onClick={() => setSBusModal(true)}>
+                    <li className="font-semibold underline cursor-pointer w-fit" onClick={() => setSBusModal(true)}>
                         <p>07/09/2024</p>
                         <Dialog open={sBusModal} as="div" className="relative z-10 focus:outline-none" onClose={()=>setSBusModal(false)}>
                             <div className="fixed inset-0 z-10 w-screen overflow-y-auto bg-emerald-900/5 p-6 backdrop-blur-2xl">
@@ -101,11 +101,8 @@ export default function ImportantInfo() {
                                             {t("Be carefull because this schedule may not be updated!")}
                                         </DialogTitle>
                                         <div className="flex flex-col items-center lg:flex-row gap-2">
-                                            <div className="basis-full lg:basis-1/2">
-                                                <img src={`/assets/images/bus/${i18n.language}-v-1.png`} />
-                                            </div>
-                                            <div className="basis-full lg:basis-1/2">
-                                                <img src={`/assets/images/bus/${i18n.language}-v-2.png`} />
+                                            <div className="basis-full">
+                                                <img src={`/assets/images/bus/${i18n.language}-s-1.png`} />
                                             </div>
                                         </div>
                                     <div className="mt-4 flex justify-end">
@@ -121,7 +118,7 @@ export default function ImportantInfo() {
                             </div>
                         </Dialog>
                     </li>
-                    <li className="font-semibold underline" onClick={() => setDBusModal(true)}>
+                    <li className="font-semibold underline cursor-pointer w-fit" onClick={() => setDBusModal(true)}>
                         <p>08/09/2024</p>
                         <Dialog open={dBusModal} as="div" className="relative z-10 focus:outline-none" onClose={()=>setDBusModal(false)}>
                             <div className="fixed inset-0 z-10 w-screen overflow-y-auto bg-emerald-900/5 p-6 backdrop-blur-2xl">
@@ -133,11 +130,8 @@ export default function ImportantInfo() {
                                             {t("Be carefull because this schedule may not be updated!")}
                                         </DialogTitle>
                                         <div className="flex flex-col items-center lg:flex-row gap-2">
-                                            <div className="basis-full lg:basis-1/2">
-                                                <img src={`/assets/images/bus/${i18n.language}-v-1.png`} />
-                                            </div>
-                                            <div className="basis-full lg:basis-1/2">
-                                                <img src={`/assets/images/bus/${i18n.language}-v-2.png`} />
+                                            <div className="basis-full">
+                                                <img src={`/assets/images/bus/${i18n.language}-d-1.png`} />
                                             </div>
                                         </div>
                                     <div className="mt-4 flex justify-end">
