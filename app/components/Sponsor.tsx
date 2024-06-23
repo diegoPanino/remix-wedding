@@ -31,6 +31,7 @@ export default function Sponsor() {
 
                 <div className="w-[200px] h-[200px] flex items-center justify-center">
                     <a className="hover:underline animate-pulse" href="https://www.flowersofcris.com/" target="_blank">
+                        <img src="/assets/images/cris-flowers.webp" />
                         flowersofcris.com
                     </a>
                 </div>

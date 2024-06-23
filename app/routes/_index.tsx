@@ -90,7 +90,7 @@ export default function Index() {
 					<a
 						href='https://calendar.app.google/kbeJU79R2cF8TkMc6'
 						target='_blank'
-						className='text-sm normal-case bg-emerald-500 text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-gray-900 cursor-pointer'>
+						className='rounded-lg text-sm normal-case bg-emerald-500 text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-emerald-600 cursor-pointer'>
 						{t("Stick it in your agenda")}
 					</a>
 				</ImgTextOverlay>

@@ -99,7 +99,7 @@ export default function RegistrationForm() {
                 ))}
                 <div className="flex w-full justify-center">
                     <Button
-                        className="mt-5 flex gap-3 text-sm normal-case bg-emerald-500 text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-gray-900 cursor-pointer"
+                        className="mt-5 flex gap-3 text-sm border border-emerald-500 rounded-lg normal-case underline text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-emerald-600 cursor-pointer"
                         type="button"
                         onClick={handleAddUser}
                     >
@@ -108,8 +108,8 @@ export default function RegistrationForm() {
                     </Button>
                 </div>
                 <div className="flex w-full">
-                     <Button
-                        className="w-full mt-10 flex justify-center items-center text-lg gap-3 normal-case bg-black text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-gray-900 cursor-pointer"
+                    <Button
+                        className="w-full mt-10 rounded-lg flex justify-center items-center text-lg gap-3 normal-case bg-emerald-500 text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-emerald-600 cursor-pointer"
                         type="submit"
                     >
                         {users.length > 1

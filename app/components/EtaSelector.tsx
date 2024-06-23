@@ -18,7 +18,7 @@ export default function EtaSelector({ index }: InputBlockFieldsProps) {
         { value: "06/09/2024", label: t("Friday 06") },
         { value: "07/09/2024", label: t("Saturday 07") },
     ];
-    const [selectedDay, setSelectedDay] = useState<tEtaDayOption>(menuOptions[5]);
+    const [selectedDay, setSelectedDay] = useState<tEtaDayOption>(menuOptions[6]);
     return (
         <div className="grid grid-cols-12 items-baseline gap-4">
             <div className="col-span-6">

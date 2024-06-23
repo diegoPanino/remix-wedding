@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Icon from './Icon';
 
 export default function LangSwitcher() {
-    let { t, i18n } = useTranslation();
+    let { i18n } = useTranslation();
     
     const handleLanguangeSelect = (event: React.MouseEvent<HTMLButtonElement>) => {
         const { value } = event.currentTarget;
@@ -13,8 +13,7 @@ export default function LangSwitcher() {
     return (
         <Menu>
             <MenuButton className="lg:inline-block w-full text-end cursor-pointer">
-                <span className='hidden lg:inline-block'>{t("Choose language")}</span>
-                <Icon className='lg:hidden ml-auto' size={24} icon={i18n.language} />
+                <Icon className='ml-auto' size={24} icon={i18n.language} />
             </MenuButton>
             <Transition
                 enter="transition ease-out duration-75"
