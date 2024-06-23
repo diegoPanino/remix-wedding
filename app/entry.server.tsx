@@ -40,9 +40,11 @@ export default async function (
                 loadPath: resolve("./public/locales/{{lng}}.json")
             },
 		});
-	let remixServer = (<I18nextProvider i18n={instance}>
-		<RemixServer context={remixContext} url={request.url} />
-	</I18nextProvider>);
+	let remixServer = (
+		<I18nextProvider i18n={instance}>
+			<RemixServer context={remixContext} url={request.url} />
+		</I18nextProvider>
+	);
 
 	return handleRequest(
 		request,
