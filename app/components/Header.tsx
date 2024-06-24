@@ -14,7 +14,7 @@ export default function Header() {
 						L'amore, non altrimenti della danza delle Menadi e del
 						delirante furore dei Coribanti, ci trascina in un
 						universo insolito, ove in altri momenti è vietato
-						avventurarci, e dove xessiamo di orientarci non appena
+						avventurarci, e dove cessiamo di orientarci non appena
 						l'ardore si spengne e il piacere si placa
 					</span>
 					<span>

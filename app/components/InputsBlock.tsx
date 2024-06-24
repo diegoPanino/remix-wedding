@@ -46,10 +46,12 @@ export default function InputsBlock({ index, deleteCb }: InputsBlokProps) {
             <div className='mt-4 lg:mt-8 lg:grid grid-cols-12 gap-10'>
                 <Field className="lg:col-span-7">
                     <Label className="text-sm/6 font-medium text-white">{t("Need a place to sleep?")}</Label>
+                    <Description className="text-sm/6 text-white/50">{ t("People from abroad, we'll have priority")}</Description>
                     <RadioAccomodation index={index} />
                 </Field>
                 <Field className="mt-4 lg:mt-0 lg:col-span-5">
                     <Label className="text-sm/6 font-medium text-white">{t("Which day you'll arrive?")}</Label>
+                    <Description className="text-sm/6 text-white/50 invisible">Yo! </Description>
                     <EtaSelector index={index} />
                 </Field>
             </div>

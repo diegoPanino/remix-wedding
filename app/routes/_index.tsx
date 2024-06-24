@@ -75,7 +75,7 @@ export default function Index() {
 					</h3>
 					<h3 className='font-black text-4xl w-fit text-center'>
 						<span className='bg-crema-pastello'>
-							{t("7 September 2024")}
+							{t("7 September 2024")}, 17:00
 						</span>
 						<br />
 						<span className='bg-crema-pastello'>
