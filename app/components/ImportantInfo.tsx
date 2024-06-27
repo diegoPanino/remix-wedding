@@ -154,6 +154,8 @@ export default function ImportantInfo() {
                 <p>{t("The day before the wedding, there will be a pre-party. (Details to follow!)")}</p>
                 <h6 className="text-2xl font-semibold mt-4 mb-1">{t("Camping")}</h6>
                 <p>{t("It is possible to camp. In the village, there are paid parking spaces for equipped camping. Where we are getting married, there is plenty of space, so on Friday and Saturday you can sleep in your van, free of charge and without additional costs.")}</p>
+                <h6 className="text-2xl font-semibold mt-4 mb-1">{t("Alloggio")}</h6>
+                <p>{t("Il posto dove ci sposiamo ha circa 50 posti letti, letti a castello. Cases Altes si trova a circa 10 minuti di macchina dal paese dove viviamo, Sant LLorenc de Morunys. Sant LLorenc de Morunys è il posto dove cercare se volete trovare un alloggio diverso")}</p>
             </div>
         </div>
     );
