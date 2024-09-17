@@ -6,18 +6,25 @@
 
   "configurations": [
     {
-      "command": "npm run dev",
+      "name": "Attach to Chrome",
+      "port": 9222,
+      "request": "attach",
+      "type": "chrome",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
       "name": "Run npm run dev",
       "request": "launch",
-      "type": "node-terminal",
-      "cwd": "${workspaceFolder}"
+      "type": "chrome",
+      "cwd": "${workspaceFolder}",
+      "webRoot": "${workspaceFolder}/"
     },
     {
       "name": "Attach by Process ID",
       "processId": "${command:PickProcess}",
       "request": "attach",
       "skipFiles": ["<node_internals>/**"],
-      "type": "pwa-node"
+      "type": "node"
     }
   ]
 }
