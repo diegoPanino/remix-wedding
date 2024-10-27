@@ -2,9 +2,11 @@ import { json, useLoaderData } from "@remix-run/react";
 import { LoaderFunctionArgs } from "@vercel/remix";
 import Header from "~/components/Header";
 import { driveFiles, fetchGooleDriveFiles, getMediaTypes } from "~/utils/googleDrive";
+import { fetchFlickrFiles } from "~/utils/flickrApi";
 import { commitSession, getSession } from "~/utils/session";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import Gallery from "~/components/Gallery";
+import VideoGallery from "~/components/VideoGallery";
 
 interface loaderReturnValue {
     videos: driveFiles[],
@@ -20,6 +22,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
         images: []
     }
     try {
+        fetchFlickrFiles();
         if (!(apiKey && typeof apiKey === 'string') ||
             !(folderId && typeof folderId === 'string')) throw new Error('Cannot connect to Drive');
         
@@ -48,7 +51,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 export default function Index() {
     const data = useLoaderData<typeof loader>();
-    const { images } = data;
+    const { images, videos } = data;
     return (
         <>
             <Header />
@@ -62,7 +65,9 @@ export default function Index() {
                         <TabPanel>
                             <Gallery files={images} />
                         </TabPanel>
-                        <TabPanel>Content 2</TabPanel>
+                        <TabPanel>
+                            <VideoGallery files={videos} />
+                        </TabPanel>
                     </TabPanels>
                 </TabGroup>
             </main>

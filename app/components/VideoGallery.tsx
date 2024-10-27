@@ -5,15 +5,12 @@ interface GalleryProps{
     files: driveFiles[]
 }
 
-// const imgUrl = `https://www.googleapis.com/drive/v3/files/${file.id}?alt=media&key=${apiKey}`;
-
-export default function Gallery(props: GalleryProps) {
+export default function VideoGallery(props: GalleryProps) {
     const sentinelRef = useRef<HTMLDivElement>(null);
     const galleryRef = useRef<HTMLDivElement>(null);
     const { files } = props;
     let currentPage = 1;
     const PAGINATED_BY = 25;
-    const imgWidth = 2048;
 
     const observerOptions = {
         root: null,
@@ -38,38 +35,31 @@ export default function Gallery(props: GalleryProps) {
             }
         }
     }, []);
-    
-    function loadImagesWithDelay(url: string, delay: number): Promise<HTMLImageElement> {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                const img = new Image();
-                img.src = url;
-                img.classList.add('w-full', 'h-full', 'object-cover');
-                img.onload = () => resolve(img);
-                img.onerror = (error) => reject({url,error});
-            }, delay);
-        });
-    };
 
     const renderImages = async () => {
         let delay = 0;
         let upperLimit = PAGINATED_BY * currentPage;
         if (upperLimit > files.length) upperLimit = files.length;
         const bottomLimit = upperLimit - PAGINATED_BY;
-        const images = files.slice(bottomLimit, upperLimit);
+        const videos = files.slice(bottomLimit, upperLimit);
         const galleryContainer = galleryRef.current;
         if (!galleryContainer) return;
-        images.forEach((file, index) => {
-            loadImagesWithDelay(`https://drive.google.com/thumbnail?id=${file.id}&sz=w${imgWidth}`, delay)
-                .then(img => {
-                    if (galleryContainer.children[index + bottomLimit])
-                        galleryContainer.replaceChild(img, galleryContainer.children[index + bottomLimit]);
-                    else
-                        galleryContainer.appendChild(img);
-                })
-                .catch((value) => {
-                    console.error('------',value.error,'ON URL', value.url);
-                })
+        videos.forEach((file, index) => {
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://drive.google.com/file/d/${file.id}/preview`;
+            iframe.classList.add('w-full', 'object-cover');
+            iframe.style.aspectRatio = "1";
+            iframe.onerror = (e) => {
+                console.error('---iframe error---',e,file.id)
+                iframe.remove();
+            };
+            setTimeout(() => {
+                if (galleryContainer.children[index + bottomLimit]) {
+                    galleryContainer.replaceChild(iframe, galleryContainer.children[index + bottomLimit]);  
+                }
+                else galleryContainer.appendChild(iframe);
+            },delay)
+        
             delay += 100;
         });
     }
@@ -88,7 +78,7 @@ export default function Gallery(props: GalleryProps) {
                     <div key={`placeholder-${i}`} role="status" className={containerClass}>
                         <div className={innerContainerClass}>
                             <svg className={svgClass} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
+                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z"/>
                             </svg>
                         </div>
                     </div>
@@ -99,7 +89,7 @@ export default function Gallery(props: GalleryProps) {
                     <div key="placeholder-${i}" role="status" class="${containerClass}">
                         <div class="${innerContainerClass}">
                             <svg class="${svgClass}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z"/>
+                                <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z"/>
                             </svg>
                         </div>
                     </div>
@@ -108,10 +98,6 @@ export default function Gallery(props: GalleryProps) {
         }
         return placeholders;
     }, [PAGINATED_BY]);
-    
-    const renderImagesHTML = useCallback((file: driveFiles) => {
-        return `<img src="https://drive.google.com/thumbnail?id=${file.id}&sz=w${imgWidth}" loading="lazy" />`;
-    }, [imgWidth]);
  
     const intersectionCallback = useCallback<IntersectionObserverCallback>((entries, observer) => {
         const galleryContainer = galleryRef.current;
@@ -140,11 +126,11 @@ export default function Gallery(props: GalleryProps) {
                 }
             }
         })
-    }, [files, PAGINATED_BY, renderImagesHTML]);
+    }, [files, PAGINATED_BY]);
     
     return (
         <div className="p-8 bg-gradient-to-b from-cyan-900 to-emerald-600 relative">
-            <div ref={galleryRef} className="grid gap-3 grid-cols-1 lg:grid-cols-3">
+            <div ref={galleryRef} className="grid gap-3 grid-cols-1 lg:grid-cols-2">
                 {renderImagePlaceholder(PAGINATED_BY)}
             </div>
             <div className="h-1 absolute left-0 right-0 bottom-1/4" ref={sentinelRef}></div>

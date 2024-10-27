@@ -7,7 +7,8 @@
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "dev:server": "remix vite:dev",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "pull:env": "vercel env pull"
   },
   "dependencies": {
     "@headlessui/react": "^2.0.4",

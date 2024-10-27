@@ -20,7 +20,14 @@ import tailwindStyles from "./styles/tailwind.css?url";
 
 
 export async function loader({ request }: LoaderFunctionArgs) {
-	let locale = await i18next.getLocale(request);
+  let locale = await i18next.getLocale(request);
+  const data = { locale };
+  return new Response(JSON.stringify(data), {
+    headers: {
+      "Content-Type": "application/json",
+      "Content-Security-Policy": "default-src 'self'; frame-src 'self' https://drive.google.com; script-src 'self';"
+    }
+  });
 	return json({ locale });
 }
 

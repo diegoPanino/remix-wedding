@@ -33,7 +33,7 @@ export async function fetchGooleDriveFiles({folderId, apiKey} : fetchFilesParam)
         // Aggiorna il token della pagina
         pageToken = data.nextPageToken;
     } while (pageToken); // Continua finché c'è un token per la pagina successiva
-    console.log(allFiles.length)
+    
     return allFiles;
 };
 

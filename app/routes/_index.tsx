@@ -1,4 +1,4 @@
-import { json, useActionData, useLoaderData } from "@remix-run/react";
+import { json, Link, useActionData, useLoaderData } from "@remix-run/react";
 import type { ActionFunctionArgs, LoaderFunctionArgs, MetaFunction } from "@vercel/remix";
 import { useTranslation } from "react-i18next";
 import { fetchGooleDriveFiles, getMediaTypes } from "~/utils/googleDrive";
@@ -215,9 +215,9 @@ export default function Index() {
 					</>
 					)
 					: (
-						<>
-							<p> return to images</p>
-						</>
+						<div className="p-8">
+							<Link to="/gallery" >Gallery</Link>
+						</div>
 					)
 					
 				}
