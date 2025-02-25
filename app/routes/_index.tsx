@@ -1,13 +1,11 @@
 import { json, Link, useActionData, useLoaderData } from "@remix-run/react";
 import type { ActionFunctionArgs, LoaderFunctionArgs, MetaFunction } from "@vercel/remix";
 import { useTranslation } from "react-i18next";
-import { fetchGooleDriveFiles, getMediaTypes } from "~/utils/googleDrive";
 import Header from "~/components/Header";
 import ImgTextOverlay from "~/components/ImgTextOverlay";
 import ImportantInfo from "~/components/ImportantInfo";
 import RegistrationForm from "~/components/RegistrationForm";
 import Sponsor from "~/components/Sponsor";
-import Gallery from "~/components/Gallery";
 import { commitSession, getSession } from "~/utils/session";
 
 // AIzaSyDx4v5M3OXA6rRJMsC651VnE-8bMesjGvk

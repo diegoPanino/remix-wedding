@@ -1,41 +1,38 @@
 import { json, useLoaderData } from "@remix-run/react";
 import { LoaderFunctionArgs } from "@vercel/remix";
 import Header from "~/components/Header";
-import { driveFiles, fetchGooleDriveFiles, getMediaTypes } from "~/utils/googleDrive";
-import { fetchFlickrFiles } from "~/utils/flickrApi";
+import { createGallery, fetchFlickrFiles, type FlickrAssetResponse, type GalleryType } from "~/utils/flickrApi";
 import { commitSession, getSession } from "~/utils/session";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
-import Gallery from "~/components/Gallery";
+// import Gallery from "~/components/Gallery";
 import VideoGallery from "~/components/VideoGallery";
-
+import GalleryContainer from "~/components/GalleryContainer";
 interface loaderReturnValue {
-    videos: driveFiles[],
-    images: driveFiles[]
+    videos: GalleryType | [];
+    images: GalleryType | [];
 }
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const session = await getSession(request.headers.get("Cookie"));
-    const apiKey = process.env.GOOGLE_DRIVE_API_KEY;
-    const folderId = process.env.GOOGLE_DRIVE_SHARED_FOLDER_ID;
-    let data: loaderReturnValue = {
-        videos: [],
-        images: []
-    }
-    try {
-        fetchFlickrFiles();
-        if (!(apiKey && typeof apiKey === 'string') ||
-            !(folderId && typeof folderId === 'string')) throw new Error('Cannot connect to Drive');
-        
-        const files = await fetchGooleDriveFiles({ folderId, apiKey });
-        const { videos, images } = getMediaTypes(files);
+    const key = process.env.FLICKR_KEY;
+    const assetId = process.env.FLICKR_ASSET_ID;
+    const userId = process.env.FLICKR_USER_ID
 
-        data = {
-            videos,
-            images,
+    try {
+        if (!(key && typeof key === 'string') ||
+            !(assetId && typeof assetId === 'string') ||
+            !(userId && typeof userId === 'string') 
+        ) throw new Error('Cannot connect to cloud');
+
+        const imagesResponse = await fetchFlickrFiles({ key, assetId, userId, mediaType: 'photos' });
+        const videosResponse = await fetchFlickrFiles({ key, assetId, userId, mediaType: 'videos' });
+
+        const data = { 
+            images: imagesResponse.gallery,
+            videos: videosResponse.gallery
         }
-		
 		return json(
-			{...data},
+            {...data},
 			{
 				headers: {
 					"Set-Cookie": await commitSession(session)
@@ -44,7 +41,10 @@ export async function loader({ request }: LoaderFunctionArgs) {
 		);
     }
     catch (error) {
-        console.error('Gallery Loader error',error)
+        let data = {
+            images: [],
+            videos: []
+        }
         return json({...data,error});
     }
 }
@@ -52,6 +52,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 export default function Index() {
     const data = useLoaderData<typeof loader>();
     const { images, videos } = data;
+    // console.log('🚀 ~ Index ~ images:', images);
     return (
         <>
             <Header />
@@ -63,10 +64,10 @@ export default function Index() {
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                            <Gallery files={images} />
+                            <GalleryContainer gallery = {images} />
                         </TabPanel>
                         <TabPanel>
-                            <VideoGallery files={videos} />
+                            {/* <VideoGallery files={videos} /> */}
                         </TabPanel>
                     </TabPanels>
                 </TabGroup>

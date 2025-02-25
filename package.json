@@ -23,18 +23,22 @@
     "i18next-fs-backend": "^2.3.1",
     "i18next-http-backend": "^2.5.2",
     "isbot": "^4",
+    "photoswipe": "^5.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.1.2",
     "react-instantsearch": "^7.11.0",
     "react-marquee-text": "^1.0.4",
+    "react-photo-album": "^3.0.2",
+    "react-photoswipe-gallery": "^3.0.2",
     "react-slick": "^0.30.2",
     "react-window": "^1.8.10",
     "react-window-infinite-loader": "^1.0.9",
     "remix-i18next": "^6.1.0",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.4",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "yet-another-react-lightbox": "^3.21.7"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.9.2",
