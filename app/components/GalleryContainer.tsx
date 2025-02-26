@@ -3,13 +3,12 @@ import "react-photo-album/columns.css";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import {useState} from "react";
-import {Fullscreen, Slideshow, Zoom} from "yet-another-react-lightbox/plugins";
+import {Fullscreen, Slideshow, Zoom, Download} from "yet-another-react-lightbox/plugins";
 
 export default function GalleryContainer({gallery}: {gallery: Photo[]}) {
     const [index, setIndex] = useState(-1);
 
     const onClickHandler = ({index}: {index: number}) => {
-        console.log('index', index);
         setIndex(index);
     }
 
@@ -28,7 +27,7 @@ export default function GalleryContainer({gallery}: {gallery: Photo[]}) {
                 open={index >= 0}
                 index={index}
                 close={onCloseHandler}
-                plugins={[Fullscreen, Slideshow, Zoom]}
+                plugins={[Fullscreen, Slideshow, Zoom, Download]}
             />
         </>
 

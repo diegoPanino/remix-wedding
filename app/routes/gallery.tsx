@@ -1,11 +1,11 @@
 import { json, useLoaderData } from "@remix-run/react";
 import { LoaderFunctionArgs } from "@vercel/remix";
 import Header from "~/components/Header";
-import { createGallery, fetchFlickrFiles, type FlickrAssetResponse, type GalleryType } from "~/utils/flickrApi";
+import VideoGallery from "~/components/VideoGallery";
+import { fetchFlickrFiles, type GalleryType } from "~/utils/flickrApi";
 import { commitSession, getSession } from "~/utils/session";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
-// import Gallery from "~/components/Gallery";
-import VideoGallery from "~/components/VideoGallery";
+
 import GalleryContainer from "~/components/GalleryContainer";
 interface loaderReturnValue {
     videos: GalleryType | [];
@@ -52,7 +52,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 export default function Index() {
     const data = useLoaderData<typeof loader>();
     const { images, videos } = data;
-    // console.log('🚀 ~ Index ~ images:', images);
+
     return (
         <>
             <Header />
@@ -64,10 +64,10 @@ export default function Index() {
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                            <GalleryContainer gallery = {images} />
+                            <GalleryContainer gallery= {images} />
                         </TabPanel>
                         <TabPanel>
-                            {/* <VideoGallery files={videos} /> */}
+                            <VideoGallery gallery= {videos} />
                         </TabPanel>
                     </TabPanels>
                 </TabGroup>

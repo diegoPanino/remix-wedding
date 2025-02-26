@@ -1,4 +1,4 @@
-import {Photo} from "react-photo-album";
+import type {Photo} from "react-photo-album";
 
 export interface FlickrAssetResponse {
     photoset: {
@@ -57,6 +57,7 @@ interface FlickrFetchReturnValue {
 interface fetchFlickrSizesProps {
     key: string;
     assetId: string;
+    mediaType: 'videos' | 'photos';
 }
 interface fetchFlickrFilesProps {
     key: string;
@@ -105,7 +106,6 @@ export async function fetchFlickrFiles({ key, assetId, userId, mediaType } : fet
     let intents = 0;
     let pages = Infinity;
     let currentPage = 1;
-    const assetType = mediaType === 'photos' ? 'img' : 'video';
 
     do {
         intents++
@@ -114,13 +114,13 @@ export async function fetchFlickrFiles({ key, assetId, userId, mediaType } : fet
             const response = await fetch(url);
 
             if (response.status !== 200) {
+                console.error('assetId',assetId);
                 throw new FlickrRequestError(response.statusText, response.status,currentPage);
             }
 
             const data = await response.json() as FlickrAssetResponse;
             const { photoset } = data;
-            const galleryResult = await Promise.allSettled(photoset.photo .map(async (photo) => getFlickrSize({key, assetId: photo.id})));
-            console.log("=>(flickrApi.ts:118) galleryResult", galleryResult);
+            const galleryResult = await Promise.allSettled(photoset.photo .map(async (photo) => getFlickrSize({key, assetId: photo.id,mediaType})));
             gallery = [
                 ...gallery,
                 ...galleryResult
@@ -128,45 +128,58 @@ export async function fetchFlickrFiles({ key, assetId, userId, mediaType } : fet
                     .map(result => (result as PromiseFulfilledResult<Photo>).value)
             ];
 
+
             pages = data.photoset.pages;
-            console.log("=>(flickrApi.ts:132) data.photoset", data.photoset);
-            console.log("=>(flickrApi.ts:132) pages", pages);
             currentPage++
         }
         catch (error) {
+            console.error('GetPhoto error')
+            currentPage++;
             if (error instanceof FlickrRequestError) {
                 fetchErrors.push(error);
             }
-            else {
-                console.error(error);
-            }
-            currentPage++
+
         }
     }
-    while (currentPage < pages && intents < 5)
+    while (currentPage <= pages && intents < 5)
     
     return {gallery, fetchErrors}
 }
 
-export async function getFlickrSize({key,assetId} : fetchFlickrSizesProps) : Promise<Photo>{
+export async function getFlickrSize({key,assetId,mediaType} : fetchFlickrSizesProps) : Promise<Photo>{
+    if (mediaType === 'photos') return [] as unknown as Photo;
     try{
         const url = `https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=${key}&photo_id=${assetId}&format=json&nojsoncallback=1`;
         const response = await fetch(url);
-
+        const label = mediaType === 'videos' ? 'Original' : 'Large';
         if (response.status !== 200) {
             throw new FlickrRequestError(response.statusText, response.status);
         }
 
         const data = await response.json() as FlickrGetSizesResponse;
         let defaultValue: FlickrSize[] = [];
+
         const srcSet: Photo[] = data.sizes.size.map( size => {
-            if (size.label === 'Large') defaultValue.push(size);
+            if (size.label === label) defaultValue.push(size);
+
             return {
                 src:size.source,
                 width:size.width,
                 height:size.height,
             }
-        });
+
+        }).filter((item): item is Photo => item !== null)
+
+        if (!defaultValue.length) {
+            console.log(`Nessuna dimensione "Large" trovata per l'assetId: ${assetId}`);
+            console.table(data.sizes.size.map(size => ({
+                assetId,
+                label: size.label,
+                width: size.width,
+                height: size.height,
+                source: size.source
+            })));
+        }
 
         return {
             src: defaultValue[0].source,
@@ -176,7 +189,7 @@ export async function getFlickrSize({key,assetId} : fetchFlickrSizesProps) : Pro
         }
     }
     catch(error){
-        console.error(error);
+        console.error('Get size error',error);
         return [] as unknown as Photo;
     }
 }
