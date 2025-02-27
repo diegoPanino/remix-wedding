@@ -20,6 +20,13 @@ export default function GalleryContainer({gallery}: {gallery: Photo[]}) {
         <>
             <ColumnsPhotoAlbum
                 photos={gallery}
+                columns={(containerWidth) => {
+                    if (containerWidth <= 480 ) return 1;
+                    else if (containerWidth > 480 && containerWidth <= 768) return 2;
+                    else if (containerWidth > 768 && containerWidth <= 990) return 3;
+                    else if (containerWidth > 990 && containerWidth <= 1440) return 4;
+                    else return 5;
+                }}
                 onClick={onClickHandler}
             />
             <Lightbox

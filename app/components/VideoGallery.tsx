@@ -2,7 +2,7 @@ import {ColumnsPhotoAlbum, type Image, type Photo} from "react-photo-album";
 import "react-photo-album/columns.css";
 
 interface VideoGalleryProps {
-    gallery: Photo[]
+    gallery: Photo[];
 }
 
 export default function VideoGallery({gallery} : VideoGalleryProps) {
@@ -29,6 +29,13 @@ export default function VideoGallery({gallery} : VideoGalleryProps) {
         <>
             <ColumnsPhotoAlbum
                 photos={galleryPhoto}
+                columns={(containerWidth) => {
+                    if (containerWidth <= 480 ) return 1;
+                    else if (containerWidth > 480 && containerWidth <= 768) return 2;
+                    else if (containerWidth > 768 && containerWidth <= 990) return 3;
+                    else if (containerWidth > 990 && containerWidth <= 1440) return 4;
+                    else return 5;
+                }}
                 componentsProps={()=>({
                     link: {target: '_blank', rel: 'noopener noreferrer'},
                 })}

@@ -1,16 +1,14 @@
 import { json, useLoaderData } from "@remix-run/react";
-import { LoaderFunctionArgs } from "@vercel/remix";
+import { type LoaderFunctionArgs } from "@vercel/remix";
 import Header from "~/components/Header";
 import VideoGallery from "~/components/VideoGallery";
-import { fetchFlickrFiles, type GalleryType } from "~/utils/flickrApi";
+import { fetchFlickrFiles } from "~/utils/flickrApi";
 import { commitSession, getSession } from "~/utils/session";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 
 import GalleryContainer from "~/components/GalleryContainer";
-interface loaderReturnValue {
-    videos: GalleryType | [];
-    images: GalleryType | [];
-}
+import {flickrGetSizesTest} from "~/utils/flickrTest";
+import {useTranslation} from "react-i18next";
 
 export async function loader({ request }: LoaderFunctionArgs) {
     const session = await getSession(request.headers.get("Cookie"));
@@ -28,8 +26,8 @@ export async function loader({ request }: LoaderFunctionArgs) {
         const videosResponse = await fetchFlickrFiles({ key, assetId, userId, mediaType: 'videos' });
 
         const data = { 
-            images: imagesResponse.gallery,
-            videos: videosResponse.gallery
+            images:imagesResponse.gallery,
+            videos:videosResponse.gallery,
         }
 		return json(
             {...data},
@@ -41,15 +39,19 @@ export async function loader({ request }: LoaderFunctionArgs) {
 		);
     }
     catch (error) {
+        let images =  flickrGetSizesTest('photo');
+        let videos =  flickrGetSizesTest('videos');
+
         let data = {
-            images: [],
-            videos: []
+            images,
+            videos,
         }
         return json({...data,error});
     }
 }
 
 export default function Index() {
+    let { t } = useTranslation();
     const data = useLoaderData<typeof loader>();
     const { images, videos } = data;
 
@@ -58,9 +60,9 @@ export default function Index() {
             <Header />
             <main>
                 <TabGroup>
-                    <TabList>
-                        <Tab>Pictures</Tab>
-                        <Tab>Videos</Tab>
+                    <TabList className="flex justify-center gap-4 mb-6">
+                        <Tab className="data-[selected]:bg-emerald-600 rounded-lg text-sm normal-case bg-emerald-500 text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-emerald-600 cursor-pointer">{t("Photos")}</Tab>
+                        <Tab className="data-[selected]:bg-emerald-600 rounded-lg text-sm normal-case bg-emerald-500 text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-emerald-600 cursor-pointer">{t("Videos")}</Tab>
                     </TabList>
                     <TabPanels>
                         <TabPanel>

@@ -1,4 +1,5 @@
 import type {Photo} from "react-photo-album";
+import {flickrGetPhotosTest} from "~/utils/flickrTest";
 
 export interface FlickrAssetResponse {
     photoset: {
@@ -119,6 +120,7 @@ export async function fetchFlickrFiles({ key, assetId, userId, mediaType } : fet
             }
 
             const data = await response.json() as FlickrAssetResponse;
+
             const { photoset } = data;
             const galleryResult = await Promise.allSettled(photoset.photo .map(async (photo) => getFlickrSize({key, assetId: photo.id,mediaType})));
             gallery = [
@@ -147,7 +149,7 @@ export async function fetchFlickrFiles({ key, assetId, userId, mediaType } : fet
 }
 
 export async function getFlickrSize({key,assetId,mediaType} : fetchFlickrSizesProps) : Promise<Photo>{
-    if (mediaType === 'photos') return [] as unknown as Photo;
+    console.log('Fetching flickr size...');
     try{
         const url = `https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=${key}&photo_id=${assetId}&format=json&nojsoncallback=1`;
         const response = await fetch(url);

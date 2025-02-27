@@ -7,6 +7,7 @@ import ImportantInfo from "~/components/ImportantInfo";
 import RegistrationForm from "~/components/RegistrationForm";
 import Sponsor from "~/components/Sponsor";
 import { commitSession, getSession } from "~/utils/session";
+import ParticlesBackground from "~/components/ParticlesBackground";
 
 // AIzaSyDx4v5M3OXA6rRJMsC651VnE-8bMesjGvk
 export const meta: MetaFunction = () => {
@@ -213,9 +214,12 @@ export default function Index() {
 					</>
 					)
 					: (
-						<div className="p-8">
-							<Link to="/gallery" >Gallery</Link>
+						<div className="h-[calc(100vh-72px)] w-full flex justify-center items-center">
+							<ParticlesBackground>
+									<Link className="z-10 rounded-lg text-sm normal-case bg-crema-pastello text-center text-emerald-600 hover:scale-105 transition-all hover:bg-emerald-600 hover:text-crema-pastello cursor-pointer px-6 py-3" to="/gallery" >{t("Gallery")}</Link>
+							</ParticlesBackground>
 						</div>
+
 					)
 					
 				}
