@@ -40,7 +40,7 @@ export default function Header() {
 					</span>
 				</MarqueeText>
 			</div>
-			<div className='col-span-1 fixed top-6 right-4 z-10'>
+			<div className='col-span-1 fixed top-6 right-4 z-20'>
 				<LangSwitcher />
 			</div>
 		</header>

@@ -1,4 +1,4 @@
-import { json, Link, useActionData, useLoaderData } from "@remix-run/react";
+import { json, Link, useLoaderData } from "@remix-run/react";
 import type { ActionFunctionArgs, LoaderFunctionArgs, MetaFunction } from "@vercel/remix";
 import { useTranslation } from "react-i18next";
 import Header from "~/components/Header";
@@ -9,7 +9,6 @@ import Sponsor from "~/components/Sponsor";
 import { commitSession, getSession } from "~/utils/session";
 import ParticlesBackground from "~/components/ParticlesBackground";
 
-// AIzaSyDx4v5M3OXA6rRJMsC651VnE-8bMesjGvk
 export const meta: MetaFunction = () => {
 	return [
 		{ title: "E Giacomino si sposa.." },

@@ -149,7 +149,6 @@ export async function fetchFlickrFiles({ key, assetId, userId, mediaType } : fet
 }
 
 export async function getFlickrSize({key,assetId,mediaType} : fetchFlickrSizesProps) : Promise<Photo>{
-    console.log('Fetching flickr size...');
     try{
         const url = `https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=${key}&photo_id=${assetId}&format=json&nojsoncallback=1`;
         const response = await fetch(url);

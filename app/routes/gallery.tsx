@@ -60,7 +60,7 @@ export default function Index() {
             <Header />
             <main>
                 <TabGroup>
-                    <TabList className="flex justify-center gap-4 mb-6">
+                    <TabList className="flex justify-center gap-4 mb-6 sticky top-2 z-10">
                         <Tab className="data-[selected]:bg-emerald-600 rounded-lg text-sm normal-case bg-emerald-500 text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-emerald-600 cursor-pointer">{t("Photos")}</Tab>
                         <Tab className="data-[selected]:bg-emerald-600 rounded-lg text-sm normal-case bg-emerald-500 text-center px-6 py-3 text-white hover:scale-105 transition-all hover:bg-emerald-600 cursor-pointer">{t("Videos")}</Tab>
                     </TabList>

@@ -19,9 +19,6 @@ export default function FlickrVideoComponent({photo,width,height,onClick}: Flick
         }
     })
 
-    console.log("=>(FlickrVideoComponent.tsx:16) videoSrcSet", videoSrcSet);
-    console.log("=>(FlickrVideoComponent.tsx:17) imgSrcSet", imgSrcSet);
-
     return (
         <div>
             <img src={photo.src} height={height} width={width} />

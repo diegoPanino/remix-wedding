@@ -2,11 +2,27 @@ import {ColumnsPhotoAlbum, type Photo} from "react-photo-album";
 import "react-photo-album/columns.css";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import {useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {Fullscreen, Slideshow, Zoom, Download} from "yet-another-react-lightbox/plugins";
 
 export default function GalleryContainer({gallery}: {gallery: Photo[]}) {
     const [index, setIndex] = useState(-1);
+
+    const onPopState = useCallback((event: PopStateEvent) => {
+        if (index >= 0) setIndex((-1));
+    },[index]);
+
+    useEffect(()=>{
+        if (index >= 0) window.history.pushState({lightboxOpen: true},"",window.location.pathname);
+        else if (window.history.state?.lightboxOpen) window.history.back();
+    },[index]);
+
+    useEffect(() => {
+        window.addEventListener("popstate", onPopState);
+        return () => {
+            window.removeEventListener("popstate", onPopState);
+        }
+    }, [onPopState]);
 
     const onClickHandler = ({index}: {index: number}) => {
         setIndex(index);
